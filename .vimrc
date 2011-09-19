@@ -39,6 +39,10 @@ set guioptions-=L
 " Enable limited line numbering
 set ruler
 
+" Save my coworkers from the dreaded VIM bell
+set visualbell
+
+
 " I hate whitespace
 " autocmd BufWritePre * :%s/\s\+$//e
 
