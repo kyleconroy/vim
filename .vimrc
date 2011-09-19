@@ -5,20 +5,24 @@ set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
 " let Vundle manage Vundle
-" required! 
+" required!
 Bundle 'gmarik/vundle'
 
 " My Bundles here:
 "
 " original repos on github
 Bundle 'altercation/vim-colors-solarized'
+Bundle 'utl.vim'
 Bundle 'juvenn/mustache.vim'
 Bundle 'othree/html5.vim'
 Bundle 'kchmck/vim-coffee-script'
 Bundle 'scrooloose/nerdtree'
 Bundle 'kana/vim-scratch'
+Bundle 'derferman/vim-orgmode'
+Bundle 'plasticboy/vim-markdown'
+Bundle 'bufkill.vim'
 
-filetype plugin indent on     " required! 
+filetype plugin indent on     " required!
 
 set wildmenu "Turn on WiLd menu
 set wildmode=list:longest,full
@@ -32,8 +36,14 @@ colorscheme solarized
 set guioptions-=r
 set guioptions-=L
 
-" Press jj to exit insert mode
-imap jj <Esc>
+" Enable limited line numbering
+set ruler
+
+" I hate whitespace
+" autocmd BufWritePre * :%s/\s\+$//e
+
+" Org Mode Settings
+" set g:org_heading_shade_leading_stars=1
 
 " Brief help
 "
