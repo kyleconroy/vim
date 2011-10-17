@@ -30,6 +30,7 @@ set wildmode=list:longest,full
 " Solarized
 syntax enable
 set background=dark
+let g:solarized_visibility="low"
 colorscheme solarized
 
 " Look and Feel
@@ -42,6 +43,12 @@ set ruler
 " Save my coworkers from the dreaded VIM bell
 set visualbell
 
+" org-mode configure
+unlet g:org_agenda_files
+let g:org_agenda_files=['~/org/new_todo.org']
+
+" Change the directory of the current file
+set autochdir
 
 " I hate whitespace
 " autocmd BufWritePre * :%s/\s\+$//e
