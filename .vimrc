@@ -13,12 +13,16 @@ Bundle 'gmarik/vundle'
 " original repos on github
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'utl.vim'
+Bundle 'tpope/vim-surround'
+Bundle 'tpope/vim-repeat'
+Bundle 'majutsushi/tagbar'
 Bundle 'juvenn/mustache.vim'
 Bundle 'othree/html5.vim'
 Bundle 'kchmck/vim-coffee-script'
 Bundle 'scrooloose/nerdtree'
+Bunlde 'wincent/Command-T'
 Bundle 'kana/vim-scratch'
-Bundle 'derferman/vim-orgmode'
+Bundle 'jceb/vim-orgmode'
 Bundle 'plasticboy/vim-markdown'
 Bundle 'bufkill.vim'
 
@@ -30,10 +34,28 @@ set wildmode=list:longest,full
 " Solarized
 syntax enable
 set background=dark
-let g:solarized_visibility="low"
+let g:solarized_visibility = "low"
 colorscheme solarized
 
+if colors_name == 'solarized'
+  if has('gui_macvim')
+    set transparency=0
+  endif
+
+  if !has('gui_running') && $TERM_PROGRAM == 'Apple_Terminal'
+    let g:solarized_termcolors = &t_Co
+    let g:solarized_termtrans = 1
+    colorscheme solarized
+  endif
+
+  call togglebg#map("<F2>")
+endif
+
 " Look and Feel
+if has("gui_running")
+  set guioptions=egmrt
+endif
+
 set guioptions-=r
 set guioptions-=L
 
@@ -45,10 +67,16 @@ set visualbell
 
 " org-mode configure
 unlet g:org_agenda_files
-let g:org_agenda_files=['~/org/new_todo.org']
+let g:org_agenda_files = ['~/org/life.org', '~/org/twilio.org']
+
+" disable folding
+set nofoldenable
+
+" \ is confusing
+let mapleader=","
 
 " Change the directory of the current file
-set autochdir
+" set autochdir
 
 " I hate whitespace
 " autocmd BufWritePre * :%s/\s\+$//e
