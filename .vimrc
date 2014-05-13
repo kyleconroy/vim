@@ -1,5 +1,6 @@
+" VUNDLE HEADER
 set nocompatible               " be iMproved
-filetype off                   " required!
+filetype off
 
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
@@ -9,80 +10,63 @@ call vundle#rc()
 Bundle 'gmarik/vundle'
 
 " My Bundles here:
-"
-" original repos on github
-Bundle 'altercation/vim-colors-solarized'
-Bundle 'utl.vim'
-Bundle 'tpope/vim-surround'
-Bundle 'tpope/vim-repeat'
-Bundle 'majutsushi/tagbar'
-Bundle 'juvenn/mustache.vim'
-Bundle 'othree/html5.vim'
+Bundle 'sjl/badwolf'
+Bundle 'kien/ctrlp.vim'
 Bundle 'kchmck/vim-coffee-script'
-Bundle 'scrooloose/nerdtree'
-Bunlde 'wincent/Command-T'
-Bundle 'kana/vim-scratch'
-Bundle 'jceb/vim-orgmode'
-Bundle 'plasticboy/vim-markdown'
-Bundle 'bufkill.vim'
+Bundle 'othree/html5.vim'
+Bundle 'tpope/vim-markdown'
+Bundle 'juvenn/mustache.vim'
+Bundle 'jnwhiteh/vim-golang'
+Bundle 'vim-scripts/vim-json-bundle'
 
-filetype plugin indent on     " required!
+filetype plugin indent on
 
-set wildmenu "Turn on WiLd menu
+" COLORS
+colorscheme badwolf     " do a barrel roll
+set t_Co=256            " use 256 colors by default
+syntax enable           " enable syntax processing
+set background=dark     " set dark background
+
+" SPACES & TABS
+set tabstop=4           " number of visual spaces per TAB
+set softtabstop=4       " number of spaces in tab when editing
+set expandtab           " tabs are spaces
+
+" UI CONFIG
+set showcmd             " show command in bottom bar
+set cursorline          " highlight current line
+set wildmenu            " visual autocomplete for command menu
+set lazyredraw          " redraw only when we need to.
+set showmatch           " highlight matching [{()}]
+set ruler               " enable limited line numbering
+set visualbell          " save my coworkers from the dreaded bell
+set autoread            " reload buffer when contents change on disc
+set guioptions-=m       " hide the menu bar
+set guioptions-=T       " hide the toolbar
+set guioptions-=r       " hide the scrollbars
+
+
+" (1st tab) a list of completions will be shown and the 
+"           command will be completed to the longest common command.
+" (2nd tab) the wildmenu will show up with all the completions that
+"           were listed before. 
 set wildmode=list:longest,full
 
-" Solarized
-syntax enable
-set background=dark
-let g:solarized_visibility = "low"
-colorscheme solarized
+" FOLDING
+set nofoldenable        " disable folding
 
-if colors_name == 'solarized'
-  if has('gui_macvim')
-    set transparency=0
-  endif
+" SEARCH
+set incsearch           " search as characters are entered
+set hlsearch            " highlight matches
 
-  if !has('gui_running') && $TERM_PROGRAM == 'Apple_Terminal'
-    let g:solarized_termcolors = &t_Co
-    let g:solarized_termtrans = 1
-    colorscheme solarized
-  endif
+" CTRL-P
+let g:ctrlp_match_window='bottom,order:ttb'  " order matching files top to bottom
+let g:ctrlp_switch_buffer=0                  " always open files in new buffers
+let g:ctrlp_working_path_mode=0              " respect change directory during sessions
+let g:ctrlp_custom_ignore='\vbuild/|dist/|venv/|\.(o|swp|pyc|egg)$' " don't search build directories
 
-  call togglebg#map("<F2>")
-endif
-
-" Look and Feel
-if has("gui_running")
-  set guioptions=egmrt
-endif
-
-set guioptions-=r
-set guioptions-=L
-
-" Enable limited line numbering
-set ruler
-
-" Save my coworkers from the dreaded VIM bell
-set visualbell
-
-" org-mode configure
-unlet g:org_agenda_files
-let g:org_agenda_files = ['~/org/life.org', '~/org/twilio.org']
-
-" disable folding
-set nofoldenable
-
-" \ is confusing
-let mapleader=","
-
-" Change the directory of the current file
-" set autochdir
-
-" I hate whitespace
-" autocmd BufWritePre * :%s/\s\+$//e
-
-" Org Mode Settings
-" set g:org_heading_shade_leading_stars=1
+" LEADER SHORTCUTS
+let mapleader=","       " Change leader key to comma
 
 " Brief help
 "
@@ -98,3 +82,4 @@ let mapleader=","
 " see :h vundle for more details
 " or wiki for FAQ
 " Note: comments after Bundle command are not allowed..
+
